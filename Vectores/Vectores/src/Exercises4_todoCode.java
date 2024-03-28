@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.Arrays;
+
 public class Exercises4_todoCode {
     public static void main(String[] args) {
 
@@ -43,6 +44,16 @@ public class Exercises4_todoCode {
             alumnos[i] = teclado.next();
         }
 
-        System.out.println(Arrays.toString(alumnos));
+        //System.out.println(Arrays.toString(alumnos));
+
+        for (int j = 0; j < 3; j++) {
+            System.out.println("\tNotas de " + alumnos[j] + ":");
+            for (int n = 0; n < 3; n++) {
+                System.out.println("Nota " + (n+1) + ": ");
+                noteTable[j][n] = teclado.nextInt();
+            }
+        }
+
+        System.out.println(Arrays.deepToString(noteTable));
     }
 }
