@@ -34,7 +34,7 @@ public class Exercises4_todoCode {
         Mostrar las 3 notas y el promedio..
          */
 
-        int noteTable[][] = new int[4][4];
+        double noteTable[][] = new double[4][4];
         String alumnos[] = new String[3];
 
         Scanner teclado = new Scanner(System.in);
@@ -49,11 +49,18 @@ public class Exercises4_todoCode {
         for (int j = 0; j < 3; j++) {
             System.out.println("\tNotas de " + alumnos[j] + ":");
             for (int n = 0; n < 3; n++) {
-                System.out.println("Nota " + (n+1) + ": ");
+                System.out.println("Nota " + (n + 1) + ": ");
                 noteTable[j][n] = teclado.nextInt();
+                noteTable[j][3] += noteTable[j][n];
             }
         }
 
         System.out.println(Arrays.deepToString(noteTable));
+
+        //IMPRESIÓN FINAL
+        System.out.println("Alumno\tNota 1\tNota2\tNota3\tPromedio");
+        for (int i = 0; i < 3; i++) {
+            System.out.println(alumnos[i] + "\t\t" + noteTable[i][0] + "\t\t" + noteTable[i][1] + "\t\t" + noteTable[i][2] + "\t\t" + (noteTable[i][3] / 3));
+        }
     }
 }
