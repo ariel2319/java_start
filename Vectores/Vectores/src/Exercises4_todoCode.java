@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.Arrays;
 
 public class Exercises4_todoCode {
     public static void main(String[] args) {
@@ -34,7 +33,7 @@ public class Exercises4_todoCode {
         Mostrar las 3 notas y el promedio..
          */
 
-        double noteTable[][] = new double[4][4];
+        /*double noteTable[][] = new double[4][4];
         String alumnos[] = new String[3];
 
         Scanner teclado = new Scanner(System.in);
@@ -61,6 +60,53 @@ public class Exercises4_todoCode {
         System.out.println("Alumno\tNota 1\tNota2\tNota3\tPromedio");
         for (int i = 0; i < 3; i++) {
             System.out.println(alumnos[i] + "\t\t" + noteTable[i][0] + "\t\t" + noteTable[i][1] + "\t\t" + noteTable[i][2] + "\t\t" + (noteTable[i][3] / 3));
+        }*/
+
+
+        //EJERCICIO 3
+        /*
+        3 vectores => 1ro nombre de ciudades; 2do t° mínimas; 3ro t° máximas
+        Programa que permita la carga de los datos; luego debe informar la ciudad con la t° más baja y cual la más alta, mostrando ciudad y t°
+         */
+
+        int cantDatos = 3;
+        String[] city = new String[cantDatos];
+        double[] minT = new double[cantDatos];
+        double[] maxT = new double[cantDatos];
+
+        Scanner teclado = new Scanner(System.in);
+        System.out.println("\tLlename de Datos :)");
+        for (int count = 0; count < cantDatos; count++) {
+            System.out.printf("Ciudad Plis => ");
+            city[count] = teclado.next();
+            System.out.printf("T° Mínima => ");
+            minT[count] = teclado.nextDouble();
+            System.out.printf("T° Máxima => ");
+            maxT[count] = teclado.nextDouble();
         }
+
+
+        double aux = minT[0];
+        int posMin = 0, posMax = 0;
+        for (int i = 0; i < minT.length; i++) {
+            if (aux > minT[i]) {
+                aux = minT[i];
+                posMin = i;
+            }
+        }
+
+        aux = maxT[0];
+        for (int i = 0; i < maxT.length; i++) {
+            if (aux < maxT[i]) {
+                aux = maxT[i];
+                posMax = i;
+            }
+        }
+
+        //System.out.println("posición  =>  temperatura" + posMin + "  =>  " + aux);
+        System.out.println("minima =>" + minT[posMin] + "\t Ciudad => " + city[posMin]);
+        System.out.println("máxima =>" + maxT[posMax] + "\t Ciudad => " + city[posMax]);
+        //System.out.println(Arrays.toString(city));
+
     }
 }
