@@ -134,43 +134,54 @@ public class Exercises4_todoCode {
         }
         //System.out.println(Arrays.deepT1oString(vuelos));
         //imprimir tabla
-        imprimirTabla(vuelos, city);
+        //imprimirTabla(vuelos, city);
 
         String control = "continue";
         int codDestino, codHorario, cantAsientos;
+
         while (control == "continue") {
+            imprimirTabla(vuelos, city);
             System.out.println("\nPor favor Ingrese su destino:\n0 - Cancún\n1 - Madrid\n2 - Iguazú\n3 - Milán\n4 - Roma\n5 - París");
             codDestino = teclado.nextInt();
-            System.out.printf("Ingrese horario de vuelo:\n0 - Mañana\n1 - Mediodía\n2 - Noche ");
+            System.out.println("Ingrese horario de vuelo:\n0 - Mañana\n1 - Mediodía\n2 - Noche ");
             codHorario = teclado.nextInt();
-            System.out.println("Cantidad de asientos a reservar: ");
+            System.out.printf("Cantidad de asientos a reservar: ");
             cantAsientos = teclado.nextInt();
 
             //System.out.println("Destino: " + city[codDestino] + "\tHorario: " + horario[codHorario] + "\tAsientos: " + cantAsientos);
 
             //Control Stock viajes
-            if (cantAsientos < vuelos[codDestino][codHorario]){
+            //3ro=> operación exitosa => "su reserva fue realizada con éxito" operación rechazada => "disculpe, no se pudo completar su operación dado que no hay asientos disponibles"
 
+            if (cantAsientos <= vuelos[codDestino][codHorario]) {
+                vuelos[codDestino][codHorario] -= cantAsientos;
+                System.out.println("\nSu reserva fue realizada con éxito :D\n");
+
+            } else {
+                System.out.println("\nDisculpe, no se pudo completar su operación dado que no hay asientos disponibles :( \n");
             }
 
 
             //Salida del sistema
-            System.out.println("\n¿Desea reservar más viajes? s/n");
+            System.out.printf("\n¿Desea reservar más viajes? s/n\t");
             control = teclado.next();
             control = control.toLowerCase();
-            if (control == "s") {
-                control = "continue";
-            } else {
+            System.out.println("control => " + control);
+            if (control.equals("n")) {
                 control = "finish";
-                System.out.println("\n\tGracias por Utilizar Nuestro SISTEMA");
+                System.out.println("\n\tGracias por Utilizar Nuestro SISTEMA\n");
+            } else {
+                control = "continue";
+                imprimirTabla(vuelos, city);
             }
+            System.out.println("control => " + control);
         }
 
     }
 
     public static void imprimirTabla(int[][] tabla, String city[]) {
 
-        System.out.println("\t\tMañ\tMed\tNoc");
+        System.out.println("\n\n\t\tMañ\tMed\tNoc");
 
         for (int i = 0; i < 6; i++) {
             System.out.println(city[i] + "\t" + tabla[i][0] + "\t" + tabla[i][1] + "\t" + tabla[i][2]);
