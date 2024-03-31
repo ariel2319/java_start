@@ -68,6 +68,7 @@ public class Exercises4_todoCode {
         3 vectores => 1ro nombre de ciudades; 2do t° mínimas; 3ro t° máximas
         Programa que permita la carga de los datos; luego debe informar la ciudad con la t° más baja y cual la más alta, mostrando ciudad y t°
          */
+        /*
 
         int cantDatos = 3;
         String[] city = new String[cantDatos];
@@ -107,6 +108,72 @@ public class Exercises4_todoCode {
         System.out.println("minima =>" + minT[posMin] + "\t Ciudad => " + city[posMin]);
         System.out.println("máxima =>" + maxT[posMax] + "\t Ciudad => " + city[posMax]);
         //System.out.println(Arrays.toString(city));
+*/
 
+        //EJERCICIO 4
+        /*
+        compañía de vuelo cuenta con 6 destinos a los que realiza 3 vuelos diarios, mañana, mediodía y noche. Administrar con una matriz:  6x3
+        1ro=> cargar la matriz del programa con cant de asientos disponibles en cada vuelo
+        2do=> un usuario debe poder ingresar el número de destino al que quiere dirigirse (índice) y en el horario (también por índice) y cantidad de pasajes que necesita
+        3ro=> operación exitosa => "su reserva fue realizada con éxito"
+            operación rechazada => "disculpe, no se pudo completar su operación dado que no hay asientos disponibles"
+           4to => finalizar operaciones => ingresar "finish"
+         */
+
+        Scanner teclado = new Scanner(System.in);
+        int vuelos[][] = new int[6][3];
+        String[] city = new String[]{"Cancún", "Madrid", "Iguazú", "Milán", "Roma", "París"};
+        String[] horario = new String[]{"Mañana", "Mediodía", "Noche"};
+
+        //llenado de viajes
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.printf("posición => (" + i + "," + j + ")");
+                vuelos[i][j] = teclado.nextInt();
+            }
+        }
+        //System.out.println(Arrays.deepT1oString(vuelos));
+        //imprimir tabla
+        imprimirTabla(vuelos, city);
+
+        String control = "continue";
+        int codDestino, codHorario, cantAsientos;
+        while (control == "continue") {
+            System.out.println("\nPor favor Ingrese su destino:\n0 - Cancún\n1 - Madrid\n2 - Iguazú\n3 - Milán\n4 - Roma\n5 - París");
+            codDestino = teclado.nextInt();
+            System.out.printf("Ingrese horario de vuelo:\n0 - Mañana\n1 - Mediodía\n2 - Noche ");
+            codHorario = teclado.nextInt();
+            System.out.println("Cantidad de asientos a reservar: ");
+            cantAsientos = teclado.nextInt();
+
+            //System.out.println("Destino: " + city[codDestino] + "\tHorario: " + horario[codHorario] + "\tAsientos: " + cantAsientos);
+
+            //Control Stock viajes
+            if (cantAsientos < vuelos[codDestino][codHorario]){
+
+            }
+
+
+            //Salida del sistema
+            System.out.println("\n¿Desea reservar más viajes? s/n");
+            control = teclado.next();
+            control = control.toLowerCase();
+            if (control == "s") {
+                control = "continue";
+            } else {
+                control = "finish";
+                System.out.println("\n\tGracias por Utilizar Nuestro SISTEMA");
+            }
+        }
+
+    }
+
+    public static void imprimirTabla(int[][] tabla, String city[]) {
+
+        System.out.println("\t\tMañ\tMed\tNoc");
+
+        for (int i = 0; i < 6; i++) {
+            System.out.println(city[i] + "\t" + tabla[i][0] + "\t" + tabla[i][1] + "\t" + tabla[i][2]);
+        }
     }
 }
